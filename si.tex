@@ -1,0 +1,133 @@
+\setcounter{page}{1}
+\renewcommand{\thepage}{S\arabic{page}}
+\setcounter{section}{0}
+\setcounter{equation}{0}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{proposition}{0}
+\setcounter{corollary}{0}
+\setcounter{assumption}{0}
+\setcounter{definition}{0}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\theproposition}{S\arabic{proposition}}
+\renewcommand{\thecorollary}{S\arabic{corollary}}
+\renewcommand{\theassumption}{S\arabic{assumption}}
+\renewcommand{\thedefinition}{S\arabic{definition}}
+\renewcommand{\theHsection}{S\arabic{section}}
+\renewcommand{\theHequation}{S\arabic{equation}}
+\renewcommand{\theHtable}{S\arabic{table}}
+\renewcommand{\theHfigure}{S\arabic{figure}}
+\renewcommand{\theHproposition}{S\arabic{proposition}}
+\providecommand{\theHcorollary}{\arabic{corollary}}
+\providecommand{\theHassumption}{\arabic{assumption}}
+\providecommand{\theHdefinition}{\arabic{definition}}
+\renewcommand{\theHcorollary}{S\arabic{corollary}}
+\renewcommand{\theHassumption}{S\arabic{assumption}}
+\renewcommand{\theHdefinition}{S\arabic{definition}}
+\allowdisplaybreaks[0]
+\makeatletter
+\let\SIoriginaladdtocontents\addtocontents
+\renewcommand{\addtocontents}[2]{
+  \def\SIextension{#1}
+  \def\SItoc{toc}
+  \ifx\SIextension\SItoc
+    \SIoriginaladdtocontents{sitoc}{#2}
+  \else
+    \SIoriginaladdtocontents{#1}{#2}
+  \fi
+}
+\renewcommand*{\l@section}[2]{\begingroup\bfseries\@dottedtocline{1}{0em}{2.2em}{#1}{#2}\endgroup}
+
+\begingroup
+\def\@title{Supplementary Information for\\``Manuscript Title''}
+\def\@author{Author One \and Author Two}
+\def\@date{}
+\let\and\SIoriginaland
+\SIoriginalmaketitle
+\endgroup
+\thispagestyle{plain}
+\makeatother
+{\setcounter{tocdepth}{1}\makeatletter
+\let\SIoriginalstarttoc\@starttoc
+\renewcommand{\@starttoc}[1]{\SIoriginalstarttoc{sitoc}}
+\tableofcontents
+\makeatother}
+\clearpage
+\onehalfspacing
+
+\section{Proof of the main result}\label{SI-sec:proof}
+
+This section proves Proposition~\ref{prop:mean} from Section~\ref{sec:framework} of the main text.
+
+\begin{proof}[Proof of Proposition~\ref{prop:mean}]
+By Assumption~\ref{ass:sampling} and Equation~\eqref{eq:mean},
+\begin{align}
+\E[\bar Y]
+&=\frac{1}{n}\sum_{i=1}^{n}\E[Y_i]
+=\mu,\label{SI-eq:expectation}\\
+\Var(\bar Y)
+&=\frac{1}{n^2}\sum_{i=1}^{n}\Var(Y_i)
+=\frac{\sigma^2}{n}.\label{SI-eq:variance}
+\end{align}
+Independence makes the covariance terms zero. These equalities establish Equation~\eqref{eq:moments}.
+\end{proof}
+
+\section{A weighted extension}\label{SI-sec:extension}
+
+\subsection{Conditions and result}\label{SI-sec:weighted-result}
+
+\begin{assumption}[Fixed weights]\label{SI-ass:weights}
+The nonrandom weights $w_1,\ldots,w_n$ are nonnegative and satisfy $\sum_{i=1}^{n}w_i=1$.
+\end{assumption}
+
+\begin{definition}[Weighted mean]\label{SI-def:weighted}
+The weighted mean is $\sum_{i=1}^{n}w_iY_i$.
+\end{definition}
+
+\begin{proposition}[Weighted moments]\label{SI-prop:weighted}
+Under Assumptions~\ref{ass:sampling} and~\ref{SI-ass:weights},
+\begin{equation}\label{SI-eq:weighted-moments}
+\E\left[\sum_{i=1}^{n}w_iY_i\right]=\mu,
+\qquad
+\Var\left(\sum_{i=1}^{n}w_iY_i\right)=\sigma^2\sum_{i=1}^{n}w_i^2.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Linearity of expectation and $\sum_i w_i=1$ give the mean. Independence gives the variance by the same argument as in Equation~\eqref{SI-eq:variance}.
+\end{proof}
+
+\begin{corollary}[Equal weights]\label{SI-cor:equal}
+Setting $w_i=1/n$ in Proposition~\ref{SI-prop:weighted} recovers Proposition~\ref{prop:mean}.
+\end{corollary}
+
+\clearpage
+\subsection{Illustration}\label{SI-sec:illustration}
+
+Table~\ref{SI-tab:weights} gives two weight choices. Figure~\ref{SI-fig:weights} illustrates the construction for two observations, using the same shared drawing styles as Figure~\ref{fig:diagram} in the main text.
+
+\begin{table}[!htbp]
+\centering
+\caption{Illustrative fixed weights.}
+\label{SI-tab:weights}
+\begin{tabularx}{\linewidth}{@{}Xll@{}}
+\toprule
+Choice & Weights & Variance \\
+\midrule
+Equal weights & $w_i=1/n$ & $\sigma^2/n$ \\
+First observation only & $w_1=1$, $w_i=0$ for $i>1$ & $\sigma^2$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/weighted-mean}
+\caption{Two observations contribute to a weighted mean. Arrows indicate the construction, not causal effects.}
+\label{SI-fig:weights}
+\end{figure}
+
+\FloatBarrier

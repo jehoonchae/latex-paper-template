@@ -1,0 +1,7 @@
+\begin{tikzpicture}[dag]
+\node[dag observed,label=left:{$Y_1$}] (Y1) at (0,1) {};
+\node[dag observed,label=left:{$Y_2$}] (Y2) at (0,-1) {};
+\node[dag observed,label=right:{$w_1Y_1+w_2Y_2$}] (mean) at (3,0) {};
+\draw[dag arrow] (Y1) -- (mean);
+\draw[dag arrow] (Y2) -- (mean);
+\end{tikzpicture}

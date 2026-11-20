@@ -1,0 +1,50 @@
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm,mathtools,amssymb}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,tabularx,graphicx,placeins,setspace}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+  dag/.style={
+    x=1.10cm,y=.82cm,
+    font=\small,
+    line width=.4pt,
+    >={Triangle[length=3.2mm,width=1.7mm]},
+    every label/.style={inner sep=1.5pt}
+  },
+  dag node/.style={
+    circle,draw=black,minimum size=4.8pt,
+    inner sep=0pt,outer sep=0pt
+  },
+  dag observed/.style={dag node,fill=black},
+  dag latent/.style={dag node,fill=white},
+  dag arrow/.style={->,shorten >=0pt,shorten <=0pt}
+}
+\input{reference-styles/apsr}
+\usepackage{xcolor}
+\definecolor{DarkBlue}{HTML}{00008B}
+\usepackage{caption}
+\captionsetup{labelfont=bf}
+\usepackage[colorlinks=true,allcolors=DarkBlue]{hyperref}
+\usepackage{titlesec}
+\allowdisplaybreaks
+\sloppy
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\indep}{\mathrel{\perp\!\!\!\perp}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\SD}{SD}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}

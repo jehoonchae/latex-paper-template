@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+\input{preamble}
+
+\title{Manuscript Title}
+\author{Author One\thanks{Institution One}\and Author Two\thanks{Institution Two}}
+\date{\today}
+
+\makeatletter
+\let\SIoriginalmaketitle\@maketitle
+\let\SIoriginaland\and
+\makeatother
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Replace this paragraph with the research question, approach, main finding, and substantive implication. The examples below illustrate the manuscript's formatting and cross-references.
+\end{abstract}
+
+\noindent\textbf{\em Keywords:} keyword one; keyword two; keyword three
+
+\clearpage
+
+\section{Introduction}\label{sec:intro}
+
+The sample mean summarizes a set of observations with a single quantity. This example separates its definition from the assumptions that establish its sampling properties. Example references include a book on experimental design \citep{fisher1935design} and the methodological article by \citet{athey2019generalized}.
+
+Section~\ref{sec:framework} states the result. SI Section~\ref{SI-sec:proof} provides its proof, and SI Section~\ref{SI-sec:extension} gives a short extension.
+
+\section{Framework}\label{sec:framework}
+
+\begin{assumption}[Independent observations]\label{ass:sampling}
+For $i=1,\ldots,n$, with $n\geq 1$:
+\begin{enumerate}[label=(\alph*)]
+\item $Y_1,\ldots,Y_n$ are mutually independent.
+\item $\E[Y_i]=\mu$ and $\Var(Y_i)=\sigma^2<\infty$.
+\end{enumerate}
+\end{assumption}
+
+\begin{definition}[Sample mean]\label{def:mean}
+The {\em sample mean} is
+\begin{equation}\label{eq:mean}
+\bar Y=\frac{1}{n}\sum_{i=1}^{n}Y_i.
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Mean and variance]\label{prop:mean}
+Under Assumption~\ref{ass:sampling}, the estimator in Definition~\ref{def:mean} satisfies
+\begin{equation}\label{eq:moments}
+\E[\bar Y]=\mu,
+\qquad
+\Var(\bar Y)=\frac{\sigma^2}{n}.
+\end{equation}
+\end{proposition}
+
+The proof appears in SI Section~\ref{SI-sec:proof}. Equation~\eqref{eq:moments} shows how the variance depends on the number of observations.
+
+\clearpage
+\section{Illustration and discussion}\label{sec:illustration}
+
+Table~\ref{tab:notation} collects the quantities in Equation~\eqref{eq:mean}. Figure~\ref{fig:diagram} shows an editable diagram. These examples contain no empirical results.
+
+\begin{table}[!htbp]
+\centering
+\caption{Illustrative quantities.}
+\label{tab:notation}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$Y_i$ & Observation $i$ \\
+$\mu$ & Common population mean \\
+$\bar Y$ & Sample mean \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/diagram}
+\caption{Illustrative directed graph. The arrow represents a proposed effect of $X$ on $Y$.}
+\label{fig:diagram}
+\end{figure}
+
+The SI also illustrates a weighted mean in Definition~\ref{SI-def:weighted}, with moments in Equation~\eqref{SI-eq:weighted-moments}. Table~\ref{SI-tab:weights} and Figure~\ref{SI-fig:weights} show its construction. The discussion of a new paper should connect its findings to the substantive question and identify the limits of the evidence.
+
+\FloatBarrier
+\ifdefined\printbibliography
+\printbibliography[title={References}]
+\else
+\bibliography{references}
+\fi
+
+\clearpage
+\input{si}
+\end{document}
